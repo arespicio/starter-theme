@@ -20,7 +20,11 @@ get_header(); ?>
 
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <header class="entry-header">
-                    <h1><?php the_title(); ?></h1>
+                    <?php if ( is_single() ) : ?>
+                        <h1><?php the_title(); ?></h1>
+                    <?php else : ?>
+                        <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+                    <?php endif; ?>
                 </header><!-- .entry-header -->
 
                 <?php the_content(); ?>
